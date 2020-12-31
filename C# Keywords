@@ -53,8 +53,98 @@ Checked and unchecked --> checked( help to raise an overflow exception which can
 fixed statement  --> fixed (The fixed statement prevents the garbage collector from relocating a movable variable)
 lock statment  --> lock
 
+
 Method Parameter Keywords
 Params  (specifies that this parameter may take a variable number of arguments)
 ref (pecifies that this parameter is passed by reference and may be read or written by the called method.)
 in (specifies that this parameter is passed by reference but is only read by the called method) 
-out (pecifies that this parameter is passed by reference and is written by the called method.)
+out (pecifies that this parameter is passed by reference and is written by the called method)
+
+
+Namespace Keywords
+using
+operator 
+:: operator 
+extern alias 
+
+
+Operator Keywords
+
+as
+await
+is
+new
+sizeof
+typeof
+stackalloc
+checked
+unchecked
+
+
+Access Keywords --> used to access the class or base class of an object 
+
+Base (used to access base class object )
+this
+
+
+Literal Keywords
+
+Null
+False
+True
+Value (not sure about it )
+Void
+
+
+Type Keywords ( are of DataType)
+
+Bool
+byte
+char
+class
+decimal
+double
+enum
+float
+int
+long
+sbyte
+short
+string
+struct
+uint
+ulong
+ushort
+
+
+Contextual keywords (Basically these are not reserved and so can be used as names or identifier. It have only special meaning only in a limited program context)
+
+Add ( Defines a custom event accessor that is invoked when client code subscribes to the event )
+Var 
+Dynamic ( Defines a reference type that enables operations in which it occurs to bypass compile-time type checking )
+Global  ( not sure about it )
+Set
+Value
+
+
+Query Keywords
+
+From
+where
+select
+group
+into
+orderby
+join
+let
+in
+on
+equals
+by 
+ascending
+descending
+
+ 
+
+
+
