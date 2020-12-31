@@ -42,3 +42,14 @@ Internal
 Protected Internal (Access is limited to the current assembly or types derived from the containing class.)
 Private Internal (accessible by types derived from the containing class, but only within its containing assembly)
 
+
+Statement Keywords
+
+Selection Statements  --> If , else, switch , case
+Iteration Statements  --> do , while, for ,foreach, in
+Jump Statements --> goto, break , continue , return , yield (You use a yield return statement to return each element one at a time), default
+Exeption handling statements --> try , catch , finally , throw 
+Checked and unchecked --> checked( help to raise an overflow exception which can only be found at runtime, with out this no exection will be raised ), unchecked ()The unchecked keyword is used to suppress overflow-checking for integral-type arithmetic operations and conversions.
+fixed statement  --> fixed (The fixed statement prevents the garbage collector from relocating a movable variable)
+lock statment  --> lock
+
