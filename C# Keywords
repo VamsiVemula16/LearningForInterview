@@ -15,3 +15,20 @@ Query keywords
 
 Modifier Keywords --> Can modify the types and type members. Modifiers allow or prevent certain parts of programs from being modified by other parts.
 
+Abstract 
+Async
+const
+event 
+extern ( Extern keyword is used to declare a method that is implemented externaly using a different launguage(C, C++)
+in
+out
+new
+override
+partial (is used to split up a class definition across serval files)
+readonly
+sealed
+static
+unsafe ( unsafe denotes an unsafe context, which is required for any operations involving pointers. 
+virtual 
+volatile ( Adding Volatile key words let the compliler know that this field might be modified by multiple thereads at the same time )
+
