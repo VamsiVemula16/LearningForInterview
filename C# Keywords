@@ -32,3 +32,13 @@ unsafe ( unsafe denotes an unsafe context, which is required for any operations 
 virtual 
 volatile ( Adding Volatile key words let the compliler know that this field might be modified by multiple thereads at the same time )
 
+
+Access Modifier Keywords  --> Used for declarion of class, methods and properties, and fields.
+
+Public
+Private
+Protected
+Internal
+Protected Internal (Access is limited to the current assembly or types derived from the containing class.)
+Private Internal (accessible by types derived from the containing class, but only within its containing assembly)
+
