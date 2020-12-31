@@ -11,3 +11,7 @@ Literal keywords
 Type keywords
 Contextual Keywords
 Query keywords
+
+
+Modifier Keywords --> Can modify the types and type members. Modifiers allow or prevent certain parts of programs from being modified by other parts.
+
