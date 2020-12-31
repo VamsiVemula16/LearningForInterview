@@ -53,3 +53,8 @@ Checked and unchecked --> checked( help to raise an overflow exception which can
 fixed statement  --> fixed (The fixed statement prevents the garbage collector from relocating a movable variable)
 lock statment  --> lock
 
+Method Parameter Keywords
+Params  (specifies that this parameter may take a variable number of arguments)
+ref (pecifies that this parameter is passed by reference and may be read or written by the called method.)
+in (specifies that this parameter is passed by reference but is only read by the called method) 
+out (pecifies that this parameter is passed by reference and is written by the called method.)
