@@ -1,0 +1,37 @@
+
+
+----Difference between IQueryable and IEnumerable 
+Both are used for data manipulations in LINQ from databases and as well as collections
+IEnumberable is present in System.Collections.namespace , IEnumberable is suitable for in-memory datatypes like Arrays, collections ..
+When querying using IEnumberable , select operation is done on Server side and loads the data into in-memory on the client side and then applies the filter (most of the job is done on client side). Ienumberable is benificial for linq to object and linq to xml queries.
+
+Iqueryable is present in System.Linq , it is best suitable when querying from out-memory like databases and services 
+when querying using Iqueryable , IQuerable executes select on server side along with the filters and other calcuations required .Iqueryable is benificial for linq to sql queries
+
+
+----Difference between Finalize and Dispose
+Finalize is GC method which is called before an object that is eligible for collection is reclaimed. It is called by runtime. This removes all unsed memory and other data once it is completed
+
+Dispose is something that need to be manually triggeed to clear the objects for those not maintained in Finalize (GC) like DB connections, network connections,File instance etc... In order to dispose those methods it is best to implement IDisposeable and override the Dispose() method.
+
+
+----DependencyInjection
+DependencyInjection is design pattern in which making classes loosly coupled. It helps in creation of dependent objects outside of class and provides those objects at runtime in different ways. 3 ways --> Constructor Injection , Method injection and property Injection
+
+
+----Difference between threading and task
+Thread is an small set of executable instructions where as task lets you to create an task and run it asynchornusly and get the status of the task if it returns an resuts then the task gives the result. Task can be cancelled using cancellation token.
+
+
+---?? (null-coalescing operator)and ??= (null coalescing assignment operator)
+?? --> evalutes the lefthand operand and returns the value if it not null and if it is null then evalutes the righthand operand and returns its result.
+??= --> assign the value of right hand operand if the left hand operand is evaluted as null
+
+
+--- Difference of functions and procs in SQL 
+Functions are execution of set of statements where it is complied and executed everytime it is called where as in procs it is compiled once and executed everytime it is called
+Functions can have one input paras and return values where as procs can have input and output params as well as return value
+Functions should return a value where proc is optional 
+Functions can be used in select statements where as procs cannot 
+Functions cannot have transactions where as procedures can have transactions
+Exception handling is possible in procs but not in functions
