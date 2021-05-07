@@ -40,3 +40,17 @@ Exception handling is possible in procs but not in functions
 
 ---What is merge statement in SQL 
 Merge is combination Select/INSERT/UPDATE/DELETE in single query instead of multiple. It choses Target and Source as well as matching conditions and then identify what to do.
+
+
+--How exceptions are handled in WebAPI
+Exceptions happened during runtime will be handled by HTTPResponseException
+500 - server errors 
+400 - client errors
+300 - Redirect erros 
+200 - Successfull responses
+100 - Information responses
+
+
+---Authorization and Authentication
+AuthorizationFilterAttribute is used to achive authorization in webapi 
+Can be authenticated using tokes, header information
