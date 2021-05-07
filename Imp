@@ -35,3 +35,8 @@ Functions should return a value where proc is optional
 Functions can be used in select statements where as procs cannot 
 Functions cannot have transactions where as procedures can have transactions
 Exception handling is possible in procs but not in functions
+
+
+
+---What is merge statement in SQL 
+Merge is combination Select/INSERT/UPDATE/DELETE in single query instead of multiple. It choses Target and Source as well as matching conditions and then identify what to do.
