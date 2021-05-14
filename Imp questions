@@ -54,3 +54,16 @@ Exceptions happened during runtime will be handled by HTTPResponseException
 ---Authorization and Authentication
 AuthorizationFilterAttribute is used to achive authorization in webapi 
 Can be authenticated using tokes, header information
+
+
+---Middleware 
+Middlewares are available as nuget packages
+middleware is software components that are assembled into an application pipeline to handle requests and responses. Each component chooses whether to pass the execution to next components for further processing
+Middleware are executed in sequence it is created 
+In Asp.Net if we use Termainal method( like Run) it will not process the next middleware, if we use (Use method) then it will go the next middleware
+To render static files all the static files should be present in wwwroot folder
+
+
+
+---WebServices
+asmx and asmx.cs are the file names for webservices
