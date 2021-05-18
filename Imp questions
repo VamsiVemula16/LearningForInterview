@@ -36,11 +36,24 @@ Functions can be used in select statements where as procs cannot
 Functions cannot have transactions where as procedures can have transactions
 Exception handling is possible in procs but not in functions
 
+---Triggers in SQL 
+There are 4 different types of triggers DDL \ DML \ CLR \ Logon triggers
+DDL   --> happened on Create / Alter / Drop  
+DML   --> happened on Insert/ update / delete
+CLR   --> 
+Logon -->
 
+---Indexes in SQL
+Indexing is used to optimize the performance of DB by minimizing the no of disk accesses required when query is processed. 
+There are multiple types of indexes like clustered index, non-clustered index, unique index, filtered index, columnstore index, hash index.
 
 ---What is merge statement in SQL 
 Merge is combination Select/INSERT/UPDATE/DELETE in single query instead of multiple. It choses Target and Source as well as matching conditions and then identify what to do.
 
+
+
+---WebServices
+asmx and asmx.cs are the file names for webservices
 
 --How exceptions are handled in WebAPI
 Exceptions happened during runtime will be handled by HTTPResponseException
@@ -64,11 +77,14 @@ In Asp.Net if we use Termainal method( like Run) it will not process the next mi
 To render static files all the static files should be present in wwwroot folder
 
 
-
----WebServices
-asmx and asmx.cs are the file names for webservices
-
-
 ---Dotnet core 
 The Startup class is mandatory and it is the entry point of the application. With the help of this class we can configure the environment in our ASP.net Core application. We can use Constructor and two different methods: ConfigureServices and Configure for setting up the environment. This class creates services and injects services as dependencies so the rest of the application can use these dependencies. The ConfigureServices used to register the service and Configure method allow us to add middleware and services to the HTTP pipeline. This is the reason ConfigureServices method calls before Configure method 
 configureservice is not a mandatory class 
+
+
+---Web
+Caching: Caching is a technique which sotres something in memory that is being used frequently to provide better performance. in asp.net mvc output cache attribute is used for applying caching. if another request comes in specificed time interval then it will return it from cache result instead of executing the controller.
+OutputCache(Duration=60, VaryByParam="parameter", location=OutputCacheLocation.Client/Server/ClientAndServer
+Cache profile can be defined in web.config and refered in controller
+
+
