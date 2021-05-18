@@ -69,6 +69,13 @@ AuthorizationFilterAttribute is used to achive authorization in webapi
 Can be authenticated using tokes, header information
 
 
+---REST
+Rest stands for representational state transfer. Bascis priniciple to be considered for RESTful API --> Client-server atchitecture , statelesssness , cachebility, layered system and uniform interface. It is an architectural pattern for echanging data over distrubuted environment
+Asp.Net Web API is a framework that makes it easy to build 
+Bearer Authentication in Web API --> it is toaken based authentication (Scalabilit of servers, loosley co
+
+
+
 ---Middleware 
 Middlewares are available as nuget packages
 middleware is software components that are assembled into an application pipeline to handle requests and responses. Each component chooses whether to pass the execution to next components for further processing
