@@ -67,3 +67,8 @@ To render static files all the static files should be present in wwwroot folder
 
 ---WebServices
 asmx and asmx.cs are the file names for webservices
+
+
+---Dotnet core 
+The Startup class is mandatory and it is the entry point of the application. With the help of this class we can configure the environment in our ASP.net Core application. We can use Constructor and two different methods: ConfigureServices and Configure for setting up the environment. This class creates services and injects services as dependencies so the rest of the application can use these dependencies. The ConfigureServices used to register the service and Configure method allow us to add middleware and services to the HTTP pipeline. This is the reason ConfigureServices method calls before Configure method 
+configureservice is not a mandatory class 
