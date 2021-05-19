@@ -72,7 +72,10 @@ Can be authenticated using tokes, header information
 ---REST
 Rest stands for representational state transfer. Bascis priniciple to be considered for RESTful API --> Client-server atchitecture , statelesssness , cachebility, layered system and uniform interface. It is an architectural pattern for echanging data over distrubuted environment
 Asp.Net Web API is a framework that makes it easy to build 
-Bearer Authentication in Web API --> it is toaken based authentication (Scalabilit of servers, loosley co
+Bearer Authentication in Web API --> it is toaken based authentication (Scalabilit of servers, loosley co .....)
+Routing in webAPI is process of matching incoming http request to controller methods, there are 2 types : Coventional type of routing and attribute routing (used like attributes).
+WEBAPI filters are attributes that are decorated over methods or controllers which are executed before or after the action methods.(IFilter is interface used for that). Different types of filters are simple/Authorization/authentication/exceptions/action
+
 
 
 
