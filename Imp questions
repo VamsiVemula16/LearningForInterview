@@ -67,7 +67,7 @@ Exceptions happened during runtime will be handled by HTTPResponseException
 ---Authorization and Authentication
 AuthorizationFilterAttribute is used to achive authorization in webapi 
 Can be authenticated using tokes, header information
-
+Process involved for OAuth --> First an request to provided will be made with credentials then it returns an bearer token. After recieving the bearer token when ever new request is happening we need to send that token as header with title "Authentication" and value as Bearer +"Token"
 
 ---REST
 Rest stands for representational state transfer. Bascis priniciple to be considered for RESTful API --> Client-server atchitecture , statelesssness , cachebility, layered system and uniform interface. It is an architectural pattern for echanging data over distrubuted environment
