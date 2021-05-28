@@ -14,6 +14,11 @@ Finalize is GC method which is called before an object that is eligible for coll
 
 Dispose is something that need to be manually triggeed to clear the objects for those not maintained in Finalize (GC) like DB connections, network connections,File instance etc... In order to dispose those methods it is best to implement IDisposeable and override the Dispose() method.
 
+---String vs String Builder
+String is immutable where as StringBuilder is immutable. Mutable means the string which can be changed.
+
+---Equals() vs ==
+Equals is used to compare the content of the string where as == is an comparision operator 
 
 ----DependencyInjection
 DependencyInjection is design pattern in which making classes loosly coupled. It helps in creation of dependent objects outside of class and provides those objects at runtime in different ways. 3 ways --> Constructor Injection , Method injection and property Injection
