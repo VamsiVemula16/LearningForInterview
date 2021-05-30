@@ -1,0 +1,1 @@
+Modren browsers as of 05/30 can send 6 requests in parallel to single domain(this is restriction from HTTP RFC2616))
