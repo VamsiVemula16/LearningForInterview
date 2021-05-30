@@ -32,7 +32,18 @@ Thread is an small set of executable instructions where as task lets you to crea
 ?? --> evalutes the lefthand operand and returns the value if it not null and if it is null then evalutes the righthand operand and returns its result.
 ??= --> assign the value of right hand operand if the left hand operand is evaluted as null
 
+---Groupby vs Order by
+Group by used to group rows that have same values into summary rows where as order by is used to sort the results either in desc or asc 
 
+---TempDB vs Views vs derived tables vs table variables vs CTEs (https://csharp-video-tutorials.blogspot.com/2012/09/derived-table-and-cte-in-sql-server.html) 
+All these types serves to provide temporary data while executing an query/SP, selection of type depends on requirment
+Views are stored in DB and can be used by another queries 
+Temp DB is data stored in TempDB , there are 2 types of tempdbs local(starts with ##) and global(starts with ##)
+table variable , like tempdb table variable also stored in tempdbs. the scope of it is in batch, SP , statement block in which it is declared. they can be passed as parameters between SP's
+Derived tables are availble in only current context 
+CTE are temoporary result set that is defined within the execution scope of CRUD opearions immediately 
+
+---
 --- Difference of functions and procs in SQL 
 Functions are execution of set of statements where it is complied and executed everytime it is called where as in procs it is compiled once and executed everytime it is called
 Functions can have one input paras and return values where as procs can have input and output params as well as return value
