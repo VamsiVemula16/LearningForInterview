@@ -1,1 +1,2 @@
-Modren browsers as of 05/30 can send 6 requests in parallel to single domain(this is restriction from HTTP RFC2616))
+---Bundling/Minification
+Modren browsers as of 05/30 can send 6 requests in parallel to single domain(this is restriction from HTTP RFC2616)) . In order to increse the performance of application it is ideal to enable Bundling/Minification , this can be done using available nuget packages like BuildBundling etc..
