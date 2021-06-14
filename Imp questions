@@ -66,8 +66,6 @@ There are multiple types of indexes like clustered index, non-clustered index, u
 ---What is merge statement in SQL 
 Merge is combination Select/INSERT/UPDATE/DELETE in single query instead of multiple. It choses Target and Source as well as matching conditions and then identify what to do.
 
-
-
 ---WebServices
 asmx and asmx.cs are the file names for webservices
 
@@ -94,6 +92,9 @@ WEBAPI filters are attributes that are decorated over methods or controllers whi
 CORS(CrossOriginResourceSharing) is w3c standard that allows server to relax same orign policy : EnableCors attribute is used to achieve it
 Odata(Open data protocol) is process of querying and manipulating the CRUD operations
 
+---Microservices
+We never expose all the sevices to the outside world, all the requests should go through single endpoint(api gateway)- Ocelot API gateway is one of the opensource gateway widely used in  DotNet environments
+Need of API gateway -- (Traffic routing, expose unified endpoint, API composition(chain of API), Caching , logging , Authentication , Authorization, Load balancing , service Discovery
 
 
 
