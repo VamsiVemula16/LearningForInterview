@@ -18,3 +18,43 @@
 
         sudo docker push whizlabregistry2099.azurecr.io/whizlabsapp
 
+
+--- Creating App service plan and web app
+
+        az appservice plan create --name appname --resource-group resourcegroupname --sku B1
+
+        az webapp create --name webappname --plan appname --resource-group resourcegroupname 
+        
+        
+
+--- Creating storage account and uploading an blob to it
+
+        az storage account create --name whizlab9090 --resource-group whizlabs-rg --location EastUS --sku Standard_LRS 
+
+        az storage container create --account-name whizlab9090 --name data
+
+        echo This is a sample html file > sample.html
+
+        az storage blob upload --account-name whizlab9090 --container-name data --name sample.html --file sample.html
+
+        az storage container set-permission --account-name whizlab9090 --name data --public-access blob
+
+        az storage blob list --account-name whizlab9090 --container-name data  --output table
+
+        az storage blob download --account-name whizlab9090 --container-name data --name sample.html --file sample2.html
+        
+        
+        
+--- Uploading files using azcopy tool
+
+        azcopy login --tenant-id=97ab3455-f094-48ff-b855-10d642093cf2
+
+        azcopy make "https://whizlab9090.blob.core.windows.net/newdata"
+
+        echo "This is a sample file" > sample.html
+
+        Remember to give Azure Storage Blob Contributor Role Based access to the storage account
+
+        azcopy copy "sample.html" "https://whizlab9090.blob.core.windows.net/newdata/sample.html"
+
+        azcopy copy "https://whizlab9090.blob.core.windows.net/newdata/sample.html" "sample3.html"
