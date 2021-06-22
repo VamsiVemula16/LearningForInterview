@@ -1,0 +1,58 @@
+
+---DNS
+We need to add ip address to A record and url to txt record in custom domain provider before adding custom domain to webapp
+
+---CosmosDB
+Change is not supported for table api 
+changefeed will not track deletes
+CHangefeed is used by azure functions to run functions when change feed happened
+TriggerOperation types (All, Create, Update , Delete and Replace)
+
+---Azcopy
+It is ideal to add tenant id when authenticating the azcopy tool 
+azcopy login --tenant-id==afanfnaslfnaflknalkf
+Azcopy Sync will only sync the dest to sour if there is an change based on last modified time where as using Azcopy copy command even if there is no change in sour and dest it will copy the files which will increase bandwidth
+
+---Application Insights
+Funnels : How well application is being used ( number of users hitting various parts of the pages )
+We need to add instrumentationkey either in appsetting or can pass directly in initilizing clas(for core in configure services method)
+By default it loggs from level warning ,to change it we need add few configurations in appsetting (ApplicationInsights{logLevel{default:debug , Microsoft:error}}})
+
+---Azure FrontDoor
+Azure front door works at level 7 (http or https) - Service works at Global level (no region need to be selecte
+ Request re-direct can be based on URL,priority. Features like multiple site hosting, session affinity ,SSL Termination , Web Application Firewall
+ 
+ ---Azure Service bus
+ Messaging service available in Azure, THere are 2 types Service Bus Queue and Service Bus Topic 
+  Service Bus Queue --> Muliple producer but single consumer , where as in Topic --> single Producer multiple Consumers (like broadcast message , might have multiple producers too )
+ Have Basic,Standard and premium tiers . to have both Queues and Topics we must use atlease Standard
+  the most efficient way to connect to a service bus is using the Transport type AMQP (Advanced Message Queuing Protocol). 
+ Queues --> Sending messaages can be performed by queueclient class but recieving requires to have RegisterMessageHandler with call back on message recieve and error occured 
+ Topics --> Sending messages can be performed by TopicClient class but recieving requries to have SubscriptionClient and RegisterMEssageHandler with callback of message recieve and error message has to be there 
+	Three types of filters for subscription for recieving to message: Boolean Filter(TrueFilter or FalseFilter), SQLFilter(we can implement SQL based filter options), CorrelationFilter(filter is based on System and User properties)
+	
+---API Management	
+It is an centrailsed portal containing all internally developed API's in once location. It contains APIGateway, Backend, Policies, Products , Subscriptions and Groups.
+Products is an combination of API's.product can be Open or Protected.Protected product requires an subscription to access the APIs , Subscriptions is way users can access the API's. Groups is way to organize the users as either Administrators,Developers, Users and Groups.
+
+Storage -- AZCopy 
+File copy can be done only by SAS   
+BLOB copy can be done by SAS and OAuth 
+SAS key types : User Delegation SAS (only to BLOB) , Account SAS and Service SAS 
+Blobs snapshots can have different metadata if it specified while creation else it has same properties/metadata like BLOB
+
+
+---CRON
+Expressions are {second} {minute} {hour} {day} {month} {day-of-week}
+
+---Ubuntu
+For RDP on ubuntu OS (remote desktop environmnet is not possible) xfce and xrdp is used
+
+---Managed Identites
+There are 2 : System-Assigned and User-Assigned (user assigned identity can be assign to one or more instances of azure service) 
+
+Permission Types : Delegated permission and Application permission
+Delegated permission is the permission granted to a signed in user where as Application permission granted to an application.
+
+---Random Points
+Integration Service Environmentt is fully isolated and dedicated environmnet for enterprise-scale integration needs. When you create a new integration service environmnet it is injected into azure virtual network which allows you to deploy logic apps as service on your Vnet
