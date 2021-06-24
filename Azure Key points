@@ -11,7 +11,7 @@ TriggerOperation types (All, Create, Update , Delete and Replace)
 ---Azcopy
 It is ideal to add tenant id when authenticating the azcopy tool 
 azcopy login --tenant-id==afanfnaslfnaflknalkf
-Azcopy Sync will only sync the dest to sour if there is an change based on last modified time where as using Azcopy copy command even if there is no change in sour and dest it will copy the files which will increase bandwidth
+Azcopy Sync will only sync the dest to sour if there is an change based on last modified time where as using Azcopy copy command copy even if there is no change in between sour and dest which will increase bandwidth
 
 ---Application Insights
 Funnels : How well application is being used ( number of users hitting various parts of the pages )
@@ -27,12 +27,14 @@ Azure front door works at level 7 (http or https) - Service works at Global leve
  
  ---Azure Service bus
  Messaging service available in Azure, THere are 2 types Service Bus Queue and Service Bus Topic 
-  Service Bus Queue --> Muliple producer but single consumer , where as in Topic --> single Producer multiple Consumers (like broadcast message , might have multiple producers too )
- Have Basic,Standard and premium tiers . to have both Queues and Topics we must use atlease Standard
+  Service Bus Queue --> Muliple producer but single consumer
+  Topic --> single Producer multiple Consumers (like broadcast message , might have multiple producers too )
+ Have Basic,Standard and premium tiers . to have both Queues and Topics we must use atleast Standard
   the most efficient way to connect to a service bus is using the Transport type AMQP (Advanced Message Queuing Protocol). 
  Queues --> Sending messaages can be performed by queueclient class but recieving requires to have RegisterMessageHandler with call back on message recieve and error occured 
  Topics --> Sending messages can be performed by TopicClient class but recieving requries to have SubscriptionClient and RegisterMEssageHandler with callback of message recieve and error message has to be there 
-	Three types of filters for subscription for recieving to message: Boolean Filter(TrueFilter or FalseFilter), SQLFilter(we can implement SQL based filter options), CorrelationFilter(filter is based on System and User properties)
+	Three types of filters for subscription for recieving to message: Boolean Filter(TrueFilter or FalseFilter), SQLFilter(we can implement SQL based filter options), CorrelationFilter(filter is based on System and User properties).
+Whenever possible it is ideal to use Correlation filters over SQL filters because they are much more efficient in processing and have less impact on throughput
 	
 ---API Management	
 It is an centrailsed portal containing all internally developed API's in once location. It contains APIGateway, Backend, Policies, Products , Subscriptions and Groups.
@@ -57,20 +59,17 @@ Expressions are {second} {minute} {hour} {day} {month} {day-of-week}
 For RDP on ubuntu OS (remote desktop environmnet is not possible) xfce and xrdp is used
 
 ---Managed Identites
-There are 2 : System-Assigned and User-Assigned (user assigned identity can be assign to one or more instances of azure service) 
+There are 2 types of managed identites: System-Assigned and User-Assigned (user assigned identity can be assign to one or more instances of azure service) 
 
 ---Event Grids
-Event grids are mainly event subscription methodlogy, it contains Event Source, Event Grid(itself) and Event Handlers
+Event grids are event subscription methodlogy, it contains Event Source, Event Grid(itself) and Event Handlers
 
 --Event Hubs
 Event hubs are big data streaming platform and event ingestion service. This sevice can be used to recieve and process millions of events per second.
-They are consits of : Producers (used to send data to event hub), Partitions (stored events are segregated into pratitions), Consumer Groups (view entire event hub data), Event recievers (a partition of group in consure groups generally mapped to single partition), Throughput units (controls the capacity of event hub) 
+They are consits of : Producers (used to send data to event hub), Partitions (stored events are segregated into partitions), Consumer Groups (view entire event hub data), Event recievers (a partition of group in consumer groups generally mapped to single partition), Throughput units (controls the capacity of event hub) 
 
 Throughputs : (incoming)ingress --> up to 1mb per sec or 1000 events per sec, (outgoing)egress- up to 2 mb per sec or 4096 events per sec
 
-
----Azure Service Bus
-Whenever possible it is ideal to use Correlation filters over SQL filters because they are much more efficient in processing and have less impact on throughput
 
 ---Permission Types : Delegated permission and Application permission
 Delegated permission is the permission granted to a signed in user where as Application permission granted to an application.
@@ -79,7 +78,7 @@ Delegated permission is the permission granted to a signed in user where as Appl
 Integration Service Environmentt is fully isolated and dedicated environmnet for enterprise-scale integration needs. When you create a new integration service environmnet it is injected into azure virtual network which allows you to deploy logic apps as service on your Vnet
 
  ---Azure Redis Cache 
- To remove the stale keys removed from the cache we can use Eviction policy and set key expiration value 
+ To remove the stale keys from the cache we can use Eviction policy and set key expiration value 
  
  ---Kudu based deployments
- Deployment configuration files let you override the default heuristics of deployment by allowing you to specify a project or folder to be deployed. Th has to be at root of the repository and it is in .ini format 
+ Deployment configuration files let you override the default heuristics of deployment by allowing you to specify a project or folder to be deployed. This has to be at root of the repository and it is in .ini format 
