@@ -164,6 +164,15 @@
         echo http://$webappname.azurewebsites.net
         
         
-        
+ ---Creating an role out of existing role 
+        Get-AzRoleDefinition "Reader" | ConvertTo-Json 
 	
-	
+---ARM Templates
+	Add the copy element to the resources section of your template to delpoy multiple instances of the resource. 
+	"copy": {
+	  "name": "<name-of-loop>",
+	  "count": <number-of-iterations>,
+	  "mode": "serial" <or> "parallel",
+	  "batchSize": <number-to-deploy-serially>
+	}
+
