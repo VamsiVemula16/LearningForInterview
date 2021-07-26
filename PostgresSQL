@@ -32,6 +32,11 @@ Nomarlization is techniguq that organizes tables in such a way that redundancy a
  3NF --> Should be 2NF and must not have any transitive functional dependencies
 BCNF --> Should be 3NF, there would be some scenarios where anomalies whould be present, if you have more than 1 candidate key. Then BCNF comes into action where you divide your tables further so that there would be only one candidate key present.
 
+Operators: 
+
+ALL --> returns TRUE if ALL of the subquery values meet the condition
+ANY --> returns TRUE if ANY of the subquery values meet the condition
+
 Syntax: (captials are keywords)
 
 Creating Schema ==> CREATE SCHEMA mynewSchema;
@@ -43,3 +48,5 @@ Alter datatype ==> ALTER TABLE students ALTER COLUMN marks TYPE character;
 DROP Column ==> ALTER TABLE students DROP COLUMN marks;
 RENAME Column ==> ALTER TABLE students RENAME COLUMN sex TO gender;
 DELETE rows ==> DELETE from studnets where id =11;
+UPDATE table ==> UPDATE students set dept='happy' where id =1'
+FETCH ==> SELECT * FROM students FETCH FIRST 8 ROWS ONLY:
