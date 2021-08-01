@@ -50,3 +50,19 @@ RENAME Column ==> ALTER TABLE students RENAME COLUMN sex TO gender;
 DELETE rows ==> DELETE from studnets where id =11;
 UPDATE table ==> UPDATE students set dept='happy' where id =1'
 FETCH ==> SELECT * FROM students FETCH FIRST 8 ROWS ONLY:
+INDEX ==> CREATE INDEX id_tablename_columnaname on tablename (columnaname);
+Hash INDEX ==> CREATE INDEX id_tablename_columnname on tablename using HASH (columnname);
+
+
+
+Execution plan is procedural plan of an declarative statement . 
+For postgres 
+      we should use keyword EXPLAIN to show the query plan
+      we should use keyword EXPLAIN ANALYSE to show the query plan along with planning time and execution time
+      
+      
+Best ways to increase query optimization: 
+  Use of indexes will reduce the cost and time of the query by eliminating full table scan. Indexes are stored in the Memory where as tables are stored in harddiscs. ( diffeernet types of indexes : B-Tree, Hash maps , bitmap index) 
+  
+  Bitmap indexes --> Bitmap indexa are performed on low cardinality columns. Filter bitwise operations, suchs as AND , OR and NOT. Postgresql does not allow to create explicitly.
+ 
