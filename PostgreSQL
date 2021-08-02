@@ -66,3 +66,8 @@ Best ways to increase query optimization:
   
   Bitmap indexes --> Bitmap indexa are performed on low cardinality columns. Filter bitwise operations, suchs as AND , OR and NOT. Postgresql does not allow to create explicitly.
  
+ 
+ Horizontal partitioning --> This can be achived by Partition by Range, Partition by List , Partition by Hash
+      Partition by range --> Create table products( ....., Partition by Range (columnname)   -- Create table product_p1 partition of products values range from ('10-1-2020') to ('10-1-2021') 
+      Partition by List --> Create table products( ....., Partition by List (columnname)   -- Create table product_p1 partition of products for values in ('p1' , 'p2') 
+      PArtition by Hash -->
