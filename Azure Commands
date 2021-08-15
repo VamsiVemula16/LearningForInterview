@@ -1,0 +1,178 @@
+---Pushing the docker image to Azure Container Registry
+        curl -sL https://packages.microsoft.com/keys/microsoft.asc | \
+            gpg --dearmor | \
+            sudo tee /etc/apt/trusted.gpg.d/microsoft.asc.gpg > /dev/null
+
+        AZ_REPO=$(lsb_release -cs)
+        echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | \
+            sudo tee /etc/apt/sources.list.d/azure-cli.list
+
+        sudo apt-get update
+        sudo apt-get install azure-cli  // Installing azure CLI to access azure container registry 
+
+        sudo az login
+
+        sudo az acr login --name whizlabregistry2099
+
+        sudo docker tag whizlabsapp whizlabregistry2099.azurecr.io/whizlabsapp
+
+        sudo docker push whizlabregistry2099.azurecr.io/whizlabsapp
+
+
+--- Creating App service plan and web app
+
+        az appservice plan create --name appname --resource-group resourcegroupname --sku B1
+
+        az webapp create --name webappname --plan appname --resource-group resourcegroupname 
+        
+        
+
+--- Creating storage account and uploading an blob to it
+
+        az storage account create --name whizlab9090 --resource-group whizlabs-rg --location EastUS --sku Standard_LRS 
+
+        az storage container create --account-name whizlab9090 --name data
+
+        echo This is a sample html file > sample.html
+
+        az storage blob upload --account-name whizlab9090 --container-name data --name sample.html --file sample.html
+
+        az storage container set-permission --account-name whizlab9090 --name data --public-access blob
+
+        az storage blob list --account-name whizlab9090 --container-name data  --output table
+
+        az storage blob download --account-name whizlab9090 --container-name data --name sample.html --file sample2.html
+        
+        
+        
+--- Uploading files using azcopy tool
+
+        azcopy login --tenant-id=97ab3455-f094-48ff-b855-10d642093cf2
+
+        azcopy make "https://whizlab9090.blob.core.windows.net/newdata"
+
+        echo "This is a sample file" > sample.html
+
+        Remember to give Azure Storage Blob Contributor Role Based access to the storage account
+
+        azcopy copy "sample.html" "https://whizlab9090.blob.core.windows.net/newdata/sample.html"
+
+        azcopy copy "https://whizlab9090.blob.core.windows.net/newdata/sample.html" "sample3.html"
+        
+        
+        
+        
+ --- Process of creating Service principle from azure cloud shell 
+
+        az ad sp create-for-rbac -n whizlabapp --skip-assignment
+
+        Define the following environment variables first
+
+        AZURE_CLIENT_ID="38ab1ada-1c41-4bc6-af9e-440db377a2d8"
+        AZURE_CLIENT_SECRET="cae68966-471e-4714-bc0d-3168cb3d3c3a"
+        AZURE_TENANT_ID="97ab3455-f094-48ff-b855-10d642093cf2"
+
+        //Assiging the service principle to keyvault resource with set of permissions 
+        az keyvault set-policy --name whizlabvault6000 --spn "38ab1ada-1c41-4bc6-af9e-440db377a2d8" --secret-permissions backup delete get list set
+        
+        
+  --Creating an logging in linux machine for view applicaiton logs 
+                az webapp log config [--application-logging {azureblobstorage, filesystem, off}]
+                     [--detailed-error-messages {false, true}]
+                     [--docker-container-logging {filesystem, off}]
+                     [--failed-request-tracing {false, true}]
+                     [--ids]
+                     [--level {error, information, verbose, warning}]
+                     [--name]
+                     [--resource-group]
+                     [--slot]
+                     [--subscription]
+                     [--web-server-logging {filesystem, off}]
+					 
+	 //To veiw  live tracing for web app 
+	       az webapp log tail [--ids]
+                   [--name]
+                   [--provider]
+                   [--resource-group]
+                   [--slot]
+                   [--subscription]
+
+--- Powershell command to create VM 
+        New-AzVm `
+            -ResourceGroupName "myResourceGroupVM" `
+            -Name "myVM" `
+            -Location "EastUS" `
+            -VirtualNetworkName "myVnet" `
+            -SubnetName "mySubnet" `
+            -SecurityGroupName "myNetworkSecurityGroup" `
+            -PublicIpAddressName "myPublicIpAddress" `
+            -Credential $cred
+            
+--- Allowing Cors on webapi
+	az webapp cors add --allowed-origins https://myapps.com --name MyWebApp --resource-group MyResourceGroup --subscription MySubscription
+	
+---Key Valut
+	az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "East Asia"
+	
+	az keyvault secret set --valut-name "constvalut" --name "sqlpassword" --value "afhsak"
+	az keyvault key create --valut-name "constvalut" --name "firstkey" --protection software
+        
+--- Creating an container for app service deployment
+	#/bin/bash
+
+        # Variables
+        appName="AppServiceLinuxDocker$random"
+        location="WestUS"
+        dockerHubContainerPath="<replace-with-docker-container-path>" #format: <username>/<container-or-image>:<tag>
+
+        # Create a Resource Group
+        az group create --name myResourceGroup --location $location
+
+        # Create an App Service Plan
+        az appservice plan create --name AppServiceLinuxDockerPlan --resource-group myResourceGroup --location $location --is-linux --sku S1
+
+        # Create a Web App
+        az webapp create --name $appName --plan AppServiceLinuxDockerPlan --resource-group myResourceGroup
+
+        # Configure Web App with a Custom Docker Container from Docker Hub
+        az webapp config container set --docker-custom-image-name $dockerHubContainerPath --name $appName --resource-group myResourceGroup
+
+        # Copy the result of the following command into a browser to see the web app.
+        echo http://$appName.azurewebsites.net
+       
+---Web Application
+        #!/bin/bash
+
+        # Replace the following URL with a public GitHub repo URL
+        gitrepo=https://github.com/Azure-Samples/php-docs-hello-world
+        webappname=mywebapp$RANDOM
+
+        # Create a resource group.
+        az group create --location westeurope --name myResourceGroup
+
+        # Create an App Service plan in `FREE` tier.
+        az appservice plan create --name $webappname --resource-group myResourceGroup --sku FREE
+
+        # Create a web app.
+        az webapp create --name $webappname --resource-group myResourceGroup --plan $webappname
+
+        # Deploy code from a public GitHub repository. 
+        az webapp deployment source config --name $webappname --resource-group myResourceGroup \
+        --repo-url $gitrepo --branch master --manual-integration
+
+        # Copy the result of the following command into a browser to see the web app.
+        echo http://$webappname.azurewebsites.net
+        
+        
+ ---Creating an role out of existing role 
+        Get-AzRoleDefinition "Reader" | ConvertTo-Json 
+	
+---ARM Templates
+	Add the copy element to the resources section of your template to delpoy multiple instances of the resource. 
+	"copy": {
+	  "name": "<name-of-loop>",
+	  "count": <number-of-iterations>,
+	  "mode": "serial" <or> "parallel",
+	  "batchSize": <number-to-deploy-serially>
+	}
+

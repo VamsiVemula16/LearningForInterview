@@ -1,0 +1,106 @@
+
+---DNS
+We need to add ip address to A record and url to txt record in custom domain provider before adding custom domain to webapp
+
+---CosmosDB
+Change is not supported for table api 
+changefeed will not track deletes
+CHangefeed is used by azure functions to run functions when change feed happened
+TriggerOperation types (All, Create, Update , Delete and Replace)
+inorder to orderby multiple columns we need to use composite index
+SQL API --> Datbase --> Colletion --> Document
+
+---Azcopy
+It is ideal to add tenant id when authenticating the azcopy tool 
+azcopy login --tenant-id==afanfnaslfnaflknalkf
+Azcopy Sync will only sync the dest to sour if there is an change based on last modified time where as using Azcopy copy command copy even if there is no change in between sour and dest which will increase bandwidth
+
+---Application Insights
+Funnels : How well application is being used ( number of users hitting various parts of the pages )
+We need to add instrumentationkey either in appsetting or can pass directly in initilizing clas(for core in configure services method)
+By default it loggs from level warning ,to change it we need add few configurations in appsetting (ApplicationInsights{logLevel{default:debug , Microsoft:error}}})
+host.json file lets  to determine how much logging a function app send to application insights 
+
+Application insights has 3 different kinds of data : Users, Sessions and Events
+Adaptive Sampling is an technique used to reduce the data ingestion to applicaiton insights from application code 
+
+---Azure FrontDoor
+Azure front door works at level 7 (http or https) - Service works at Global level (no region need to be selecte
+ Request re-direct can be based on URL,priority. Features like multiple site hosting, session affinity ,SSL Termination , Web Application Firewall
+Supports XML MIME extension 
+Front door supports in between 1kb to 8kb and supports compression encodings (Gzip and Brotli) 
+ 
+ ---Azure Service bus
+ Messaging service available in Azure, THere are 2 types Service Bus Queue and Service Bus Topic 
+  Service Bus Queue --> Muliple producer but single consumer
+  Topic --> single Producer multiple Consumers (like broadcast message , might have multiple producers too )
+ Have Basic,Standard and premium tiers . to have both Queues and Topics we must use atleast Standard
+  the most efficient way to connect to a service bus is using the Transport type AMQP (Advanced Message Queuing Protocol). 
+ Queues --> Sending messaages can be performed by queueclient class but recieving requires to have RegisterMessageHandler with call back on message recieve and error occured 
+ Topics --> Sending messages can be performed by TopicClient class but recieving requries to have SubscriptionClient and RegisterMEssageHandler with callback of message recieve and error message has to be there 
+	Three types of filters for subscription for recieving to message: Boolean Filter(TrueFilter or FalseFilter), SQLFilter(we can implement SQL based filter options), CorrelationFilter(filter is based on System and User properties).
+Whenever possible it is ideal to use Correlation filters over SQL filters because they are much more efficient in processing and have less impact on throughput	
+Correlation filters only use equality operator we cannot use not equality operator
+
+---API Management	
+It is an centrailsed portal containing all internally developed API's in once location. It contains APIGateway, Backend, Policies, Products , Subscriptions and Groups.
+Products is an combination of API's.product can be Open or Protected.Protected product requires an subscription to access the APIs , Subscriptions is way users can access the API's. Groups is way to organize the users as either Administrators,Developers, Users and Groups.
+	https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/New-AzApiManagement?view=azps-6.1.0&viewFallbackFrom=azps-4.3.0
+
+
+---Storage 
+Using REST API we can acuire lease on Blobs --> https://myaccount.blob.core.windows.net/mycontainer/myblob?comp=lease 
+
+-- AZCopy(Storage) 
+File copy can be done only by SAS   
+BLOB copy can be done by SAS and OAuth 
+SAS key types : User Delegation SAS (only to BLOB) , Account SAS and Service SAS 
+Blobs snapshots can have different metadata if it specified while creation else it has same properties/metadata like BLOB
+
+
+---CRON
+Expressions are {second} {minute} {hour} {day} {month} {day-of-week}
+
+---Ubuntu
+For RDP on ubuntu OS (remote desktop environmnet is not possible) xfce and xrdp is used
+
+---Managed Identites
+There are 2 types of managed identites: System-Assigned and User-Assigned (user assigned identity can be assign to one or more instances of azure service) 
+
+---Event Grids
+Event grids are event subscription methodlogy, it contains Event Source, Event Grid(itself) and Event Handlers
+AdvancedFilters are used on limit the listerns
+Event grid works on 5 concepts ( Events(What happened), Event sources(Where event happened), Topics (The end point where publisher send events - kind of collection of events where subscriber subscribes), Event subscriptions, Event Handlers)
+Event Grid Capabilities  : https://docs.microsoft.com/en-us/azure/event-grid/overview
+Event grids are capabile of eventtype filtering 
+
+--Event Hubs
+Event hubs are big data streaming platform and event ingestion service. This sevice can be used to recieve and process millions of events per second.
+They are consits of : Producers (used to send data to event hub), Partitions (stored events are segregated into partitions), Consumer Groups (view entire event hub data), Event recievers (a partition of group in consumer groups generally mapped to single partition), Throughput units (controls the capacity of event hub) 
+
+Throughputs : (incoming)ingress --> up to 1mb per sec or 1000 events per sec, (outgoing)egress- up to 2 mb per sec or 4096 events per sec
+We need to create Event Hub Namespace which consists of multiple Eventhubs. Using Eventhubs (EventHubProducerClient) we can send events in batchs and can verify if list of events reached maximum limit
+
+
+---Permission Types : Delegated permission and Application permission
+Delegated permission is the permission granted to a signed in user where as Application permission granted to an application.
+
+
+ ---Azure Redis Cache 
+ To remove the stale keys from the cache we can use Eviction policy and set key expiration value 
+ caching behavior settings 
+	Bypass cache : Do not cache and ignore origin-provided cache-directive headers.
+	Override   : ignore origin provided cache duration use the provided cache duration. This will not override cache-control:no-cache
+	Set if missing : Honor origin-provided cache-directive headers, if they exist; otherwise use the provided cache duration.
+
+ 
+ ---Kudu based deployments
+ Deployment configuration files let you override the default heuristics of deployment by allowing you to specify a project or folder to be deployed. This has to be at root of the repository and it is in .ini format 
+ 
+ ---Function Apps
+Custom handlers https://docs.microsoft.com/en-us/azure/azure-functions/functions-custom-handlers
+because ListInstancesAsync() can be used to get the statuses of all orchestration instances. This will help in understanding if the process is stuck anywhere.
+
+---Random Points
+Integration Service Environmentt is fully isolated and dedicated environmnet for enterprise-scale integration needs. When you create a new integration service environmnet it is injected into azure virtual network which allows you to deploy logic apps as service on your Vnet
+Maximiun retention period for storage queues and Event hub is 7 days 

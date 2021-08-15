@@ -1,0 +1,73 @@
+PostgreSQL is an open-source object relational database systems. ITt is worlds most advanced open source relational database.
+
+Features of PostgresSQL
+  -- Data Types, Data Integrity , Performance, Reliability , Security and Extensibility
+  
+Command Categories 
+  -- DDL , DML , DCL and TCL 
+  
+In PostgreSQL, a schema is a namespace that contains named database objects such as tables, views, indexes, data types, functions, stored procedures and operators.
+A database can contain one or multiple schemas and each schema belongs to only one database. Two schemas can have different objects that share the same name.
+
+
+PosgtgresSQL structure ==> Database --> Schemas --> Table
+
+Entity & Attributes ==> Attributed can be Composite,Simple,Singe Valued, Multivalued , Stored ,Derived and Complete Attributes
+                   Complet attributes ==> Attributes that can be represented by grouping composite attributes between (), separating the components with commas, and by displaying multivalued attributes between [] are known as complex attributes.
+
+
+Keys in Database ==> 
+    Candidate --> Minimum set of attributes which can uniquely identify the tuple.Can be simple key or composite key.
+        Super --> Any set of attributes which can uniquely identify the tuple.Can be simple key or composite key.
+    Alternate --> Candidate key other than primary key is alternate key
+    Primary, Secondary;
+    
+Contraint ==> NOT NULL, UNIQUE, Check ==> This ensures that all the values in a column satisfy a specific condition , DEFAULT, INDEX ==> This contraint is used to create and retrieve data from the database very quickly.
+
+Nomarlization is techniguq that organizes tables in such a way that redundancy and dependency of data is reduced.
+ 1NF, 2NF , 3NF and BCNF
+ 
+ 1NF --> Each table cell should have single value. So basically all the records must be unique.
+ 2NF --> Should be 1NF and should also have single column primary key
+ 3NF --> Should be 2NF and must not have any transitive functional dependencies
+BCNF --> Should be 3NF, there would be some scenarios where anomalies whould be present, if you have more than 1 candidate key. Then BCNF comes into action where you divide your tables further so that there would be only one candidate key present.
+
+Operators: 
+
+ALL --> returns TRUE if ALL of the subquery values meet the condition
+ANY --> returns TRUE if ANY of the subquery values meet the condition
+
+Syntax: (captials are keywords)
+
+Creating Schema ==> CREATE SCHEMA mynewSchema;
+Truncate table ==> TRUNCATE TABLE students; ( just remove all the data in the table)
+Rename table ==> ALTER TABLE students RENAME TO newStudnets;
+DROP table ==> DROP TABLE students;
+Add column ==> ALTER TABLE students ADD dob date , ADD sex char, ADD marks integer;
+Alter datatype ==> ALTER TABLE students ALTER COLUMN marks TYPE character;
+DROP Column ==> ALTER TABLE students DROP COLUMN marks;
+RENAME Column ==> ALTER TABLE students RENAME COLUMN sex TO gender;
+DELETE rows ==> DELETE from studnets where id =11;
+UPDATE table ==> UPDATE students set dept='happy' where id =1'
+FETCH ==> SELECT * FROM students FETCH FIRST 8 ROWS ONLY:
+INDEX ==> CREATE INDEX id_tablename_columnaname on tablename (columnaname);
+Hash INDEX ==> CREATE INDEX id_tablename_columnname on tablename using HASH (columnname);
+
+
+
+Execution plan is procedural plan of an declarative statement . 
+For postgres 
+      we should use keyword EXPLAIN to show the query plan
+      we should use keyword EXPLAIN ANALYSE to show the query plan along with planning time and execution time
+      
+      
+Best ways to increase query optimization: 
+  Use of indexes will reduce the cost and time of the query by eliminating full table scan. Indexes are stored in the Memory where as tables are stored in harddiscs. ( diffeernet types of indexes : B-Tree, Hash maps , bitmap index) 
+  
+  Bitmap indexes --> Bitmap indexa are performed on low cardinality columns. Filter bitwise operations, suchs as AND , OR and NOT. Postgresql does not allow to create explicitly.
+ 
+ 
+ Horizontal partitioning --> This can be achived by Partition by Range, Partition by List , Partition by Hash
+      Partition by range --> Create table products( ....., Partition by Range (columnname)   -- Create table product_p1 partition of products values range from ('10-1-2020') to ('10-1-2021') 
+      Partition by List --> Create table products( ....., Partition by List (columnname)   -- Create table product_p1 partition of products for values in ('p1' , 'p2') 
+      PArtition by Hash -->

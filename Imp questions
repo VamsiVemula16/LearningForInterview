@@ -15,7 +15,7 @@ Finalize is GC method which is called before an object that is eligible for coll
 Dispose is something that need to be manually triggeed to clear the objects for those not maintained in Finalize (GC) like DB connections, network connections,File instance etc... In order to dispose those methods it is best to implement IDisposeable and override the Dispose() method.
 
 ---String vs String Builder
-String is immutable where as StringBuilder is immutable. Mutable means the string which can be changed.
+String is immutable where as StringBuilder is mutable. Mutable means the string which can be changed.
 
 ---Equals() vs ==
 Equals is used to compare the content of the string where as == is an comparision operator 
@@ -66,8 +66,6 @@ There are multiple types of indexes like clustered index, non-clustered index, u
 ---What is merge statement in SQL 
 Merge is combination Select/INSERT/UPDATE/DELETE in single query instead of multiple. It choses Target and Source as well as matching conditions and then identify what to do.
 
-
-
 ---WebServices
 asmx and asmx.cs are the file names for webservices
 
@@ -94,6 +92,9 @@ WEBAPI filters are attributes that are decorated over methods or controllers whi
 CORS(CrossOriginResourceSharing) is w3c standard that allows server to relax same orign policy : EnableCors attribute is used to achieve it
 Odata(Open data protocol) is process of querying and manipulating the CRUD operations
 
+---Microservices
+We never expose all the sevices to the outside world, all the requests should go through single endpoint(api gateway)- Ocelot API gateway is one of the opensource gateway widely used in  DotNet environments
+Need of API gateway -- (Traffic routing, expose unified endpoint, API composition(chain of API), Caching , logging , Authentication , Authorization, Load balancing , service Discovery
 
 
 
@@ -106,6 +107,7 @@ To render static files all the static files should be present in wwwroot folder
 
 
 ---Dotnet core 
+Point of execution of dotnet core project starts from Main method in program.cs class and then moves to StartUp.cs (name can be modified) followed by ConfigureService and Configure
 The Startup class is mandatory and it is the entry point of the application. With the help of this class we can configure the environment in our ASP.net Core application. We can use Constructor and two different methods: ConfigureServices and Configure for setting up the environment. This class creates services and injects services as dependencies so the rest of the application can use these dependencies. The ConfigureServices used to register the service and Configure method allow us to add middleware and services to the HTTP pipeline. This is the reason ConfigureServices method calls before Configure method 
 configureservice is not a mandatory class 
 
