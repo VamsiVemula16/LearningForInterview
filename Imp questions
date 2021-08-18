@@ -31,7 +31,7 @@ Thread is an small set of executable instructions where as task lets you to crea
 ---?? (null-coalescing operator)and ??= (null coalescing assignment operator)
 ?? --> evalutes the lefthand operand and returns the value if it not null and if it is null then evalutes the righthand operand and returns its result.
 ??= --> assign the value of right hand operand if the left hand operand is evaluted as null
-
+ 
 ---Groupby vs Order by
 Group by used to group rows that have same values into summary rows where as order by is used to sort the results either in desc or asc 
 
