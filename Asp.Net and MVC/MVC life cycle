@@ -20,3 +20,6 @@ If the result is not a view, the action result will execute on its own. This Res
 
 
 Routing --> Controller Intialization --> Action Execution --> Result Execution --> View Engine 
+
+
+https://www.tutorialspoint.com/asp.net_mvc/asp.net_mvc_routing.htm
