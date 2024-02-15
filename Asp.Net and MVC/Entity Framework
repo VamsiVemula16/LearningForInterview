@@ -1,0 +1,54 @@
+Current latest version of EF is Core 6
+
+Entity framework is an object oriented mapper that enables .net developers to work with database using .net classes(or objects).
+
+
+## ADO.Net vs Entity Framework in C#: Advantages and Disadvantages
+
+Both ADO.Net and Entity Framework are popular technologies for data access in C#, but they cater to different needs and preferences. Here's a breakdown of their advantages and disadvantages:
+
+**ADO.Net**
+
+**Advantages:**
+
+* **Fine-grained control:** You have complete control over SQL queries and database interactions, allowing for maximum customization and optimization.
+* **Performance:** ADO.Net offers potentially better performance due to its direct connection with the database and lack of translation overhead.
+* **Flexibility:** Supports various data sources, including non-relational databases, making it suitable for diverse projects.
+
+**Disadvantages:**
+
+* **Complexity:** Requires writing low-level SQL code, which can be complex and time-consuming to maintain.
+* **Error-prone:** Manual SQL coding increases the risk of errors and security vulnerabilities.
+* **Less developer-friendly:** Can be challenging for developers without strong SQL experience.
+
+
+**Entity Framework**
+
+**Advantages:**
+
+* **Ease of use:** Provides a high-level API for data access, allowing you to work with data using C# instead of raw SQL.
+* **Object-oriented approach:** Data is represented as objects, simplifying development and reducing the need for manual string manipulation.
+* **Productivity:** Automatic code generation saves development time and reduces boilerplate code.
+* **Maintainability:** Code is generally cleaner and easier to maintain due to the higher level of abstraction.
+
+**Disadvantages:**
+
+* **Performance overhead:** The translation of LINQ queries to SQL can introduce some performance overhead compared to ADO.Net.
+* **Less control:** Limited control over the generated SQL, making it less suitable for performance-critical tasks.
+* **Flexibility limitations:** Primarily designed for relational databases, though support for other data sources is improving.
+
+
+**Choosing the Right Tool:**
+
+The best choice depends on your specific project requirements:
+
+* **Use ADO.Net when:**
+    * You need maximum control and performance.
+    * You're working with diverse data sources beyond relational databases.
+    * You have developers comfortable with writing and maintaining complex SQL queries.
+* **Use Entity Framework when:**
+    * You prioritize developer productivity and code maintainability.
+    * You're working with a standard relational database.
+    * You value the benefits of an object-oriented approach to data access.
+
+Remember, you can even combine both technologies within a single application for optimal results. Use ADO.Net for specific performance-critical tasks and Entity Framework for the rest of your data access needs.
